@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Moon, Sun, SunMoon } from "lucide-react";
 
 const ModeToggle = () => {
+    
     const mounted = useSyncExternalStore(
         () => () => {},
         () => true,

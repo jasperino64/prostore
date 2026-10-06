@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
-import sampleData from "@/db/sample-data";
 import ProductList from "@/components/shared/product/product-list";
+import { getLatestProducts } from "@/lib/actions/product.actions";
 
 export const metadata: Metadata = {
     title: "Home",
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
 };
 // const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const Homepage = () => {
+const Homepage = async () => {
     // await delay(2000); // Simulate a delay
-    console.log("Rendering Homepage with sample data:", sampleData);
-    return <ProductList data={sampleData.products} title="New Arrivals" limit={4} />;
+    const latestProducts = await getLatestProducts();
+    return <ProductList data={latestProducts} title="New Arrivals" />;
 };
 
 export default Homepage;
